@@ -12,4 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Fotos conferidas por destino para evitar imagens genéricas ou incorretas.
+  const destinationPhotos = {
+    'Corinto': 'https://commons.wikimedia.org/wiki/Special:FilePath/The%20Temple%20of%20Apollo%20in%20Ancient%20Corinth%20on%20June%206%2C%202018.jpg?width=1200',
+    'Dolomitas': 'https://commons.wikimedia.org/wiki/Special:FilePath/Tre%20cime%20di%20Lavaredo%20dalla%20forcella.jpg?width=1200',
+    'Verona': 'https://commons.wikimedia.org/wiki/Special:FilePath/Verona%20-%20Piazza%20Bra%20-%20Arena.jpg?width=1200',
+    'Milão': 'https://commons.wikimedia.org/wiki/Special:FilePath/DuomoMilano.jpg?width=1200'
+  };
+
+  document.querySelectorAll('.destination').forEach(card => {
+    const title = card.querySelector('h3')?.textContent.trim();
+    const img = card.querySelector('img');
+    if (title && img && destinationPhotos[title]) {
+      img.src = destinationPhotos[title];
+      img.alt = title;
+    }
+  });
 });

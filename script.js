@@ -2,6 +2,19 @@ const boxes=[...document.querySelectorAll('#checklist input[type="checkbox"]')];
 boxes.forEach((box,i)=>{box.checked=localStorage.getItem('europa2026-check-'+i)==='1';box.addEventListener('change',()=>localStorage.setItem('europa2026-check-'+i,box.checked?'1':'0'));});
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 05/10 = Corinto + Micenas; 06/10 = Atenas.
+  const timeline = document.querySelector('.timeline');
+  if (timeline) {
+    const articles = [...timeline.querySelectorAll(':scope > article.day')];
+    const day05 = articles.find(a => a.querySelector('time')?.textContent.trim() === '05 OUT');
+    const day06 = articles.find(a => a.querySelector('time')?.textContent.trim() === '06 OUT');
+    if (day05 && day06) {
+      day05.querySelector('time').textContent = '06 OUT';
+      day06.querySelector('time').textContent = '05 OUT';
+      timeline.insertBefore(day06, day05);
+    }
+  }
+
   const days = [...document.querySelectorAll('details.collapsible-day')];
   days.forEach(day => {
     day.addEventListener('toggle', () => {

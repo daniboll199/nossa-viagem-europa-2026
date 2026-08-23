@@ -2,6 +2,82 @@ const boxes=[...document.querySelectorAll('#checklist input[type="checkbox"]')];
 boxes.forEach((box,i)=>{box.checked=localStorage.getItem('europa2026-check-'+i)==='1';box.addEventListener('change',()=>localStorage.setItem('europa2026-check-'+i,box.checked?'1':'0'));});
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Início da página: incluir Lago di Garda na rota.
+  const heroSub = document.querySelector('.hero-sub');
+  if (heroSub) heroSub.textContent = 'Lisboa → Corinto → Atenas → Milos → Dolomitas → Veneza → Verona → Lago di Garda → Milão → Lisboa';
+
+  const routeInner = document.querySelector('.route-inner');
+  if (routeInner) routeInner.innerHTML = '<span>🇵🇹 Lisboa</span><b>→</b><span>🏛️ Corinto</span><b>→</b><span>🇬🇷 Atenas</span><b>→</b><span>🏝️ Milos</span><b>→</b><span>🏔️ Dolomitas</span><b>→</b><span>🚤 Veneza</span><b>→</b><span>🏟️ Verona</span><b>→</b><span>🌊 Lago di Garda</span><b>→</b><span>⛪ Milão</span><b>→</b><span>🇵🇹 Lisboa</span>';
+
+  const stats = [...document.querySelectorAll('.stats div')];
+  const destinosStat = stats.find(d => d.querySelector('span')?.textContent.trim() === 'destinos');
+  if (destinosStat?.querySelector('strong')) destinosStat.querySelector('strong').textContent = '9';
+
+  // Slideshow suave no topo com os destinos da viagem.
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    const slides = [
+      {name:'Lisboa', url:'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=2200&q=85'},
+      {name:'Atenas', url:'https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=2200&q=85'},
+      {name:'Corinto', url:'https://commons.wikimedia.org/wiki/Special:FilePath/The%20Temple%20of%20Apollo%20in%20Ancient%20Corinth%20on%20June%206%2C%202018.jpg?width=1800'},
+      {name:'Milos', url:'https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=2200&q=85'},
+      {name:'Dolomitas', url:'https://commons.wikimedia.org/wiki/Special:FilePath/Tre%20cime%20di%20Lavaredo%20dalla%20forcella.jpg?width=1800'},
+      {name:'Veneza', url:'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=2200&q=85'},
+      {name:'Verona', url:'https://commons.wikimedia.org/wiki/Special:FilePath/Verona%20-%20Piazza%20Bra%20-%20Arena.jpg?width=1800'},
+      {name:'Lago di Garda', url:'https://commons.wikimedia.org/wiki/Special:FilePath/Lago%20di%20Garda.jpg?width=1800'},
+      {name:'Milão', url:'https://commons.wikimedia.org/wiki/Special:FilePath/DuomoMilano.jpg?width=1800'}
+    ];
+
+    hero.style.backgroundImage = 'none';
+    hero.style.overflow = 'hidden';
+
+    const layerA = document.createElement('div');
+    const layerB = document.createElement('div');
+    [layerA, layerB].forEach(layer => {
+      layer.className = 'hero-slide-layer';
+      layer.style.cssText = 'position:absolute;inset:0;background-size:cover;background-position:center;transition:opacity 1.4s ease;z-index:0;';
+      hero.insertBefore(layer, hero.firstChild);
+    });
+
+    const shade = document.createElement('div');
+    shade.style.cssText = 'position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,29,24,.9),rgba(12,29,24,.38));z-index:1;pointer-events:none;';
+    hero.insertBefore(shade, hero.children[2]);
+    const nav = hero.querySelector('.nav');
+    const heroContent = hero.querySelector('.hero-content');
+    if (nav) { nav.style.position='relative'; nav.style.zIndex='2'; }
+    if (heroContent) { heroContent.style.position='relative'; heroContent.style.zIndex='2'; }
+
+    let active = 0;
+    let index = 0;
+    const layers = [layerA, layerB];
+    layers[0].style.opacity = '1';
+    layers[1].style.opacity = '0';
+    layers[0].style.backgroundImage = `url("${slides[0].url}")`;
+
+    const caption = document.createElement('div');
+    caption.className = 'hero-place-caption';
+    caption.textContent = slides[0].name;
+    caption.style.cssText = 'position:absolute;right:22px;bottom:20px;z-index:2;color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.28);backdrop-filter:blur(6px);padding:7px 10px;border-radius:999px;';
+    hero.appendChild(caption);
+
+    const goNext = () => {
+      index = (index + 1) % slides.length;
+      const nextLayer = 1 - active;
+      const img = new Image();
+      img.onload = () => {
+        layers[nextLayer].style.backgroundImage = `url("${slides[index].url}")`;
+        layers[nextLayer].style.opacity = '1';
+        layers[active].style.opacity = '0';
+        active = nextLayer;
+        caption.textContent = slides[index].name;
+      };
+      img.onerror = () => { index = (index + 1) % slides.length; };
+      img.src = slides[index].url;
+    };
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(goNext, 5500);
+  }
+
   // 05/10 = Corinto + Micenas; 06/10 = Atenas.
   const timeline = document.querySelector('.timeline');
   if (timeline) {

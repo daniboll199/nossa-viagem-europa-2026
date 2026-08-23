@@ -47,6 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
     hospedagens.target = '_blank';
     hospedagens.rel = 'noopener noreferrer';
   }
+  const milos = docCards.find(a => a.querySelector('b')?.textContent.trim() === 'Milos');
+  if (milos) {
+    milos.querySelector('b').textContent = 'Seguro Viagem';
+    milos.querySelector('span').textContent = '🛡️';
+    milos.href = 'https://drive.google.com/drive/folders/1tgxWIxFZQjK7bz7FWU1_thggNCwojwMz?usp=sharing';
+    milos.target = '_blank';
+    milos.rel = 'noopener noreferrer';
+  }
 
   const hero = document.querySelector('.hero');
   if (hero && !hero.dataset.slideshowReady) {
@@ -62,11 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
       ['Lago di Garda','https://commons.wikimedia.org/wiki/Special:FilePath/Lago%20di%20Garda%20-%20panoramio.jpg?width=1800'],
       ['Milão','https://commons.wikimedia.org/wiki/Special:FilePath/DuomoMilano.jpg?width=1800']
     ];
-
     const style = document.createElement('style');
     style.textContent = '.hero{transition:background-image 1.2s ease-in-out}.hero-place-label{position:absolute;right:22px;bottom:20px;z-index:3;background:rgba(10,24,20,.55);backdrop-filter:blur(7px);color:#fff;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.05em}.hero{isolation:isolate}.hero:after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(12,29,24,.88),rgba(12,29,24,.28));pointer-events:none}.hero>.nav,.hero>.hero-content{position:relative;z-index:2}@media(max-width:600px){.hero-place-label{right:14px;bottom:14px;font-size:11px}}';
     document.head.appendChild(style);
-
     const label = document.createElement('div');
     label.className = 'hero-place-label';
     hero.appendChild(label);

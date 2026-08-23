@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setDocLink('Passagens','https://drive.google.com/drive/folders/1Qx0XDG5QpduQjeltGaTMfg4SQNPKL38Q?usp=sharing');
   setDocLink('Hospedagens','https://drive.google.com/drive/folders/1sPBNoKf1SsritsdovZyo3x2553HUXQYu?usp=sharing');
   setDocLink('Carros','https://drive.google.com/drive/folders/14ceY2W3-kr7TkfOksSo5o85VlNy7nYfa?usp=sharing');
+  const seguro = docCards.find(a => a.querySelector('b')?.textContent.trim() === 'Seguro');
+  if (seguro) { seguro.querySelector('b').textContent = 'Contatos'; seguro.querySelector('span').textContent = '👥'; }
   const milos = docCards.find(a => a.querySelector('b')?.textContent.trim() === 'Milos');
   if (milos) {
     milos.querySelector('b').textContent = 'Seguro Viagem';

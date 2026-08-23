@@ -12,7 +12,38 @@ document.addEventListener('DOMContentLoaded', () => {
       day06.querySelector('time').textContent = '05 OUT';
       timeline.insertBefore(day06, day05);
     }
+
+    const day04 = [...timeline.querySelectorAll(':scope > article.day')].find(a => a.querySelector('time')?.textContent.trim() === '04 OUT');
+    if (day04) {
+      const details = day04.querySelector('details.collapsible-day');
+      const summaryText = details?.querySelector('summary .summary-text');
+      const content = details?.querySelector('.day-content');
+      if (summaryText) summaryText.innerHTML = '<span>PORTUGAL · LISBOA</span><h3>Belém antes do voo</h3><small>Pastéis · Jerónimos · Tejo · Torre de Belém</small>';
+      if (content) content.innerHTML = `
+        <div class="day4-hero">
+          <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1400&q=88" alt="Lisboa e o Tejo" loading="lazy">
+          <div class="day4-hero-copy"><span>04 OUT · LISBOA</span><h3>Um dia leve por Belém</h3><p>Clássicos de Lisboa sem correria, com retorno a Loures antes do voo para Atenas.</p></div>
+        </div>
+        <div class="day4-grid">
+          <section><b>🌤️ Manhã</b><p><strong>08:30</strong> Loures → Belém<br><strong>09:15</strong> Pastéis de Belém<br><strong>10:00</strong> Mosteiro dos Jerónimos</p><div class="day4-links"><a href="https://maps.app.goo.gl/MrrfxBd3vt2nMQbP9" target="_blank" rel="noopener noreferrer">Pastéis</a><a href="https://maps.app.goo.gl/PPtF7pVJ6VGMYMra6" target="_blank" rel="noopener noreferrer">Jerónimos</a></div></section>
+          <section><b>🌊 Tejo</b><p><strong>11:15</strong> Praça do Império<br><strong>12:00</strong> Padrão dos Descobrimentos<br><strong>12:30</strong> caminhada até a Torre</p><div class="day4-links"><a href="https://maps.app.goo.gl/q1ven7t8cXvbeZFx9" target="_blank" rel="noopener noreferrer">Padrão</a><a href="https://maps.app.goo.gl/42vwfdriCvA31zaZ6" target="_blank" rel="noopener noreferrer">Torre</a></div></section>
+          <section class="day4-food"><b>🍽️ 13:30 · Almoço</b><p><strong>O Prado</strong> como primeira opção. Alternativa: Cais de Belém.</p><small>🍴 Bacalhau à Brás · polvo à lagareiro · bacalhau à lagareiro</small><div class="day4-links"><a href="https://maps.app.goo.gl/qjNNmn5J5gtXj6Wq7" target="_blank" rel="noopener noreferrer">O Prado</a><a href="https://maps.app.goo.gl/qoYARxgj7AjC4Y1k8" target="_blank" rel="noopener noreferrer">Cais de Belém</a></div></section>
+          <section><b>☕ Tarde</b><p><strong>15:00</strong> passeio sem pressa<br><strong>16:00</strong> último pastel de nata<br><strong>16:30–17:00</strong> retorno a Loures</p><a class="day4-map" href="https://maps.app.goo.gl/J6kvxFEnUDyoNfmu5" target="_blank" rel="noopener noreferrer">📍 Manteigaria</a></section>
+          <section class="day4-flight"><b>✈️ Noite</b><p><strong>18:30–19:00</strong> chegada ao aeroporto<br><strong>21:30</strong> voo para Atenas</p></section>
+        </div>`;
+
+      if (!document.getElementById('day4-style')) {
+        const day4Style = document.createElement('style');
+        day4Style.id = 'day4-style';
+        day4Style.textContent = `
+          .day4-hero{position:relative;overflow:hidden;border-radius:18px;margin:2px 0 16px;min-height:250px;background:#173c35}.day4-hero img{width:100%;height:250px;object-fit:cover;display:block;opacity:.86}.day4-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,38,31,.84),rgba(12,38,31,.14))}.day4-hero-copy{position:absolute;left:22px;right:22px;bottom:20px;color:#fff;z-index:2;max-width:520px}.day4-hero-copy span{font-size:.72rem;letter-spacing:.13em;font-weight:800;color:#f0d9aa}.day4-hero-copy h3{font-size:1.55rem;margin:4px 0 5px}.day4-hero-copy p{margin:0;color:rgba(255,255,255,.88)}.day4-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.day4-grid section{background:#fff;border:1px solid #e6e7e3;border-radius:15px;padding:15px}.day4-grid section b{color:#173c35}.day4-grid section p{margin:7px 0 0;line-height:1.55}.day4-grid section small{display:block;margin-top:7px;color:#6b756f}.day4-food{background:#fffaf0!important}.day4-flight{background:#eef5f2!important;grid-column:1/-1}.day4-links{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.day4-links a,.day4-map{display:inline-flex;text-decoration:none;background:#edf3ef;color:#173c35;border-radius:999px;padding:7px 10px;font-size:.78rem;font-weight:800}.day4-map{margin-top:11px}.day4-grid a:hover{filter:brightness(.96)}
+          @media(max-width:700px){.day4-hero,.day4-hero img{min-height:210px;height:210px}.day4-hero-copy{left:16px;right:16px;bottom:15px}.day4-hero-copy h3{font-size:1.3rem}.day4-hero-copy p{font-size:.9rem}.day4-grid{grid-template-columns:1fr}.day4-flight{grid-column:auto}.day4-grid section{padding:13px}}
+        `;
+        document.head.appendChild(day4Style);
+      }
+    }
   }
+
   const days = [...document.querySelectorAll('details.collapsible-day')];
   days.forEach(day => day.addEventListener('toggle', () => { if (day.open) days.forEach(other => { if (other !== day) other.open = false; }); }));
   const destinationPhotos = {
@@ -42,8 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     seguro.querySelector('b').textContent = 'Contatos';
     seguro.querySelector('span').textContent = '👥';
     seguro.href = 'https://drive.google.com/drive/folders/12loBrZ8s_teONPNVljtm2lE1xxCHverK?usp=sharing';
-    seguro.target = '_blank';
-    seguro.rel = 'noopener noreferrer';
+    seguro.target = '_blank'; seguro.rel = 'noopener noreferrer';
   }
   const milos = docCards.find(a => a.querySelector('b')?.textContent.trim() === 'Milos');
   if (milos) {

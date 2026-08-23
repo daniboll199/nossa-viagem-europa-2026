@@ -1,28 +1,7 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Europa 2026</title>
-</head>
-<body>
-  <p style="font-family:system-ui;padding:24px">Carregando a versão mais recente…</p>
-  <script>
-    (async () => {
-      try {
-        let h = await fetch('./v12/index.html?build=20260823-1855', { cache: 'no-store' }).then(r => r.text());
-        h = h
-          .replace(/href="style\.css\?v=\d+"/g, 'href="./v12/style.css?build=20260823-1855"')
-          .replace(/src="script\.js\?v=\d+"/g, 'src="./v12/script.js?build=20260823-1855"');
-        const extraScript = '<script src="./v12/maps-links.js?build=20260823-1855"><\/script>';
-        h = h.replace('</body>', extraScript + '</body>');
-        document.open();
-        document.write(h);
-        document.close();
-      } catch (e) {
-        location.replace('./v12/?build=20260823-1855');
-      }
-    })();
-  </script>
-</body>
-</html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Europa 2026</title></head>
+<body><p style="font-family:system-ui;padding:24px">Carregando a versão mais recente…</p>
+<script>
+(async()=>{try{let h=await fetch('./v12/index.html?build=20260823-1906',{cache:'no-store'}).then(r=>r.text());h=h.replace(/href="style\.css\?v=\d+"/g,'href="./v12/style.css?build=20260823-1906"').replace(/src="script\.js\?v=\d+"/g,'src="./v12/script.js?build=20260823-1906"');const x='<script src="./v12/maps-links.js?build=20260823-1906"><\/script>';h=h.replace('</body>',x+'</body>');document.open();document.write(h);document.close();}catch(e){location.replace('./v12/?build=20260823-1906');}})();
+</script></body></html>

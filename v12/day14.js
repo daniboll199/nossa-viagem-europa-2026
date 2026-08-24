@@ -1,0 +1,30 @@
+(()=>{
+  const apply=()=>{
+    const timeline=document.querySelector('.timeline');
+    if(!timeline)return;
+    const day=[...timeline.querySelectorAll(':scope > article.day')].find(a=>a.querySelector('time')?.textContent.trim()==='14 OUT');
+    if(!day)return;
+    const details=day.querySelector('details');
+    const summary=details?.querySelector('.summary-text');
+    const content=details?.querySelector('.day-content');
+    if(summary)summary.innerHTML='<span>ITÁLIA · VERONA + LAGO DI GARDA</span><h3>Verona + Sirmione</h3><small>Arena · Piazza delle Erbe · Adige · Castello Scaligero · Lago di Garda</small>';
+    if(content)content.innerHTML=`
+      <div class="day4-hero day14-verona"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Verona%20-%20Piazza%20Bra%20-%20Arena.jpg?width=1600" alt="Arena de Verona" loading="lazy"><div class="day4-hero-copy"><span>14 OUT · VERONA + SIRMIONE</span><h3>Romeu, Julieta e o Lago di Garda</h3><p>Uma manhã pelo coração histórico de Verona e uma tarde tranquila na península mais charmosa do Lago di Garda.</p></div></div>
+      <div class="day4-grid">
+        <section><b>🚗 07:30 · Saída para Verona</b><p>Chegar cedo para aproveitar o centro histórico ainda tranquilo.</p><small>🅿️ Sugestão prática: estacionar nos arredores do centro e seguir a pé.</small><a class="day4-map" href="https://maps.google.com/?q=Parcheggio+Porta+Palio+Verona" target="_blank" rel="noopener noreferrer">📍 Estacionamento</a></section>
+        <section class="day11-hike"><b>🏟️ 08:15–09:00 · Piazza Bra + Arena</b><p><strong>Piazza Bra</strong> · Arena de Verona por fora · fotos e caminhada sem pressa.</p><a class="day4-map" href="https://maps.google.com/?q=Arena+di+Verona" target="_blank" rel="noopener noreferrer">📍 Arena</a></section>
+        <section><b>🏘️ 09:00–10:15 · Centro histórico</b><p>Via Mazzini → <strong>Casa di Giulietta</strong> → Piazza delle Erbe → Piazza dei Signori.</p><small>⭐ A graça aqui é caminhar pelas ruas, não ficar preso em atrações internas.</small><div class="day4-links"><a href="https://maps.google.com/?q=Casa+di+Giulietta+Verona" target="_blank" rel="noopener noreferrer">Julieta</a><a href="https://maps.google.com/?q=Piazza+delle+Erbe+Verona" target="_blank" rel="noopener noreferrer">Piazza delle Erbe</a></div></section>
+        <section><b>🌉 10:15–11:15 · Adige + Ponte Pietra</b><p>Caminhada até a <strong>Ponte Pietra</strong> para uma das vistas mais bonitas de Verona.</p><small>Se estiverem animados, subir alguns minutos em direção ao Castel San Pietro para o mirante.</small><a class="day4-map" href="https://maps.google.com/?q=Ponte+Pietra+Verona" target="_blank" rel="noopener noreferrer">📍 Ponte Pietra</a></section>
+        <section class="day4-food"><b>🍝 11:30–12:30 · Almoço em Verona</b><p>Escolher uma trattoria simples no centro e provar <strong>bigoli</strong>, risotto all'Amarone ou pizza.</p><small>💡 Almoçar um pouco cedo ajuda a chegar a Sirmione antes do pico da tarde.</small></section>
+        <section class="day4-flight"><b>🚗 12:30–13:30 · Verona → Sirmione</b><p>Seguir para o Lago di Garda.</p><small>⚠️ Em outubro ainda é período tarifado em Sirmione: não contaria com estacionamento gratuito perto do centro.</small><a class="day4-map" href="https://maps.google.com/?q=Parcheggio+Monte+Baldo+Sirmione" target="_blank" rel="noopener noreferrer">🅿️ Parcheggio Monte Baldo</a></section>
+        <section class="day11-return"><b>🏰 13:45–14:30 · Castello Scaligero</b><p>Atravessar a ponte levadiça e entrar no centro histórico de Sirmione.</p><small>O castelo cercado pela água é o grande cartão-postal da cidade.</small><a class="day4-map" href="https://maps.google.com/?q=Castello+Scaligero+Sirmione" target="_blank" rel="noopener noreferrer">📍 Castello Scaligero</a></section>
+        <section><b>🌊 14:30–16:00 · Vielas + lago</b><p>Piazza Carducci → ruelas do centro → <strong>Passeggiata delle Muse</strong> → pequenos píeres e vistas do Garda.</p><small>❤️ Aqui eu deixaria tempo livre para simplesmente caminhar e curtir o lago.</small><a class="day4-map" href="https://maps.google.com/?q=Passeggiata+delle+Muse+Sirmione" target="_blank" rel="noopener noreferrer">📍 Passeggiata delle Muse</a></section>
+        <section class="day4-food"><b>🍨 16:00 · Gelato / café</b><p>Parada curta no centro histórico para um gelato antes de seguir pela península.</p><small>Não precisa transformar Sirmione em uma corrida de atrações.</small></section>
+        <section><b>🌿 16:20–17:30 · Norte da península</b><p>Caminhar em direção a <strong>San Pietro in Mavino</strong> e aos arredores das Grotte di Catullo.</p><small>Se o tempo estiver apertado, eu não faria a visita completa às ruínas; priorizaria o passeio e as vistas.</small><a class="day4-map" href="https://maps.google.com/?q=San+Pietro+in+Mavino+Sirmione" target="_blank" rel="noopener noreferrer">📍 San Pietro</a></section>
+        <section class="day4-flight day14-sunset"><b>🌅 17:30–18:30 · Fim de tarde no Garda</b><p>Voltar devagar pelo centro e escolher um ponto à beira do lago para o fim de tarde.</p><small>⭐ Fechamento perfeito do dia: castelo, lago, ruelas e luz dourada.</small></section>
+        <section class="day4-flight day14-night"><b>🍽️ 18:30+ · Jantar / retorno</b><p>Jantar simples em Sirmione ou seguir para Medole e comer no caminho.</p><small>Para provar: tortellini, peixe do lago ou uma boa pizza.</small></section>
+      </div>`;
+    if(!document.getElementById('day14-style')){const s=document.createElement('style');s.id='day14-style';s.textContent='.day14-verona:after{background:linear-gradient(90deg,rgba(49,32,24,.88),rgba(49,32,24,.08))}.day14-sunset{background:#f5efe3!important}.day14-night{background:#f1f3ed!important}';document.head.appendChild(s);}
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(apply,350));else setTimeout(apply,350);
+})();

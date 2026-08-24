@@ -6,9 +6,9 @@
     ['Milos','https://commons.wikimedia.org/wiki/Special:FilePath/Sarakiniko%20Beach%20on%20the%20island%20of%20Milos%2C%20Greece.jpg?width=2000'],
     ['Dolomitas','https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/The_Odle_group_in_the_Funes_valley_%28Dolomites%29.jpg/1280px-The_Odle_group_in_the_Funes_valley_%28Dolomites%29.jpg'],
     ['Veneza','https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=2000&q=88'],
-    ['Verona','https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=2000&q=88'],
-    ['Lago di Garda','https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=2000&q=88'],
-    ['Milão','https://images.unsplash.com/photo-1520440229-6469a149ac59?auto=format&fit=crop&w=2000&q=88']
+    ['Verona','https://commons.wikimedia.org/wiki/Special:FilePath/Verona%20-%20Piazza%20Bra%20-%20Arena.jpg?width=2000'],
+    ['Lago di Garda','https://commons.wikimedia.org/wiki/Special:FilePath/SIR%20-%20Lake%20Garda%20and%20Sirmione%20peninsula%20seen%20from%20Scaligero%20Castle%2C%20Italy%2C%202014.jpg?width=2000'],
+    ['Milão','https://commons.wikimedia.org/wiki/Special:FilePath/DuomoMilano.jpg?width=2000']
   ];
   const start=()=>{
     const hero=document.querySelector('header.hero');

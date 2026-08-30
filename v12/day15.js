@@ -1,0 +1,43 @@
+(()=>{
+  const apply=()=>{
+    const timeline=document.querySelector('.timeline');
+    if(!timeline)return;
+    let day=[...timeline.querySelectorAll(':scope > article.day')].find(a=>a.querySelector('time')?.textContent.trim()==='15 OUT');
+    if(!day){
+      const d14=[...timeline.querySelectorAll(':scope > article.day')].find(a=>a.querySelector('time')?.textContent.trim()==='14 OUT');
+      if(!d14)return;
+      day=document.createElement('article');
+      day.className='day';
+      day.innerHTML='<time>15 OUT</time><div class="marker">🌊</div><details class="day-card collapsible-day"><summary><div class="summary-text"></div><div class="summary-chevron">⌄</div></summary><div class="day-content"></div></details>';
+      d14.insertAdjacentElement('afterend',day);
+    }
+    const details=day.querySelector('details');
+    const summary=details?.querySelector('.summary-text');
+    const content=details?.querySelector('.day-content');
+    if(summary)summary.innerHTML='<span>ITÁLIA · LAGO DI GARDA NORTE</span><h3>Limone + Ciclopista + Riva + Malcesine</h3><small>E-bike · Limone · Riva del Garda · Malcesine · pôr do sol</small>';
+    if(content)content.innerHTML=`
+      <div class="day4-hero day15-garda"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/SIR%20-%20Lake%20Garda%20and%20Sirmione%20peninsula%20seen%20from%20Scaligero%20Castle%2C%20Italy%2C%202014.jpg?width=1600" alt="Lago di Garda" loading="lazy"><div class="day4-hero-copy"><span>15 OUT · LAGO DI GARDA NORTE</span><h3>Bike suspensa + vilas do Garda</h3><p>Um dia panorâmico pelo norte do lago, com a Ciclopista del Garda como experiência principal.</p></div></div>
+      <div class="day4-grid">
+        <section><b>🚗 07:30 · Medole → Limone sul Garda</b><p>Saída cedo para ganhar tempo antes da bike.</p><small>A estrada já fica muito bonita quando começa a acompanhar o Garda.</small><a class="day4-map" href="https://www.google.com/maps/dir/?api=1&origin=Medole%2C+Italy&destination=Limone+sul+Garda%2C+Italy" target="_blank" rel="noopener noreferrer">📍 Rota para Limone</a></section>
+        <section><b>🅿️ 09:00 · Estacionar em Limone</b><p><strong>Parcheggio Multipiano</strong> · Via Lungolago Guglielmo Marconi, 50.</p><small>⭐ Melhor escolha para esse roteiro: fica junto ao centro e perto do acesso à ciclovia.</small><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Parcheggio+Multipiano+Limone+sul+Garda" target="_blank" rel="noopener noreferrer">📍 Estacionamento</a></section>
+        <section class="day11-hike"><b>🚴 09:15–11:15 · Ciclopista del Garda ⭐⭐⭐</b><p><strong>E-bike</strong> · Centro de Limone → Via Nova → Sopino → Capo Reamol → trecho suspenso → divisa Lombardia/Trentino → retorno.</p><small>🌊 O trecho suspenso sobre o Garda é o grande momento da manhã. Reserve tempo para várias paradas e fotos.</small><div class="day4-links"><a href="https://www.google.com/maps/search/?api=1&query=Limone+Bike+Rental+Via+IV+Novembre+20" target="_blank" rel="noopener noreferrer">Limone Bike Rental</a><a href="https://www.google.com/maps/search/?api=1&query=Bike+Center+Limone+Via+IV+Novembre+29" target="_blank" rel="noopener noreferrer">Bike Center Limone</a></div></section>
+        <section><b>⏱️ Ritmo da bike</b><p><strong>09:15</strong> retirar bikes<br><strong>09:30</strong> começar<br><strong>10:00</strong> Capo Reamol<br><strong>10:00–10:45</strong> trecho suspenso + fotos<br><strong>10:45</strong> retorno<br><strong>11:15</strong> devolver bikes</p></section>
+        <section class="day4-food"><b>🍋 11:15–12:30 · Limone a pé</b><p>Centro histórico → Lungolago Marconi → gelato ou café.</p><small>💡 Eu deixaria a Limonaia del Castèl como opcional; a bike já é a atração principal de Limone.</small><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Limone+sul+Garda+Centro+Storico" target="_blank" rel="noopener noreferrer">📍 Centro de Limone</a></section>
+        <section class="day4-flight"><b>🚗 12:30 · Limone → Riva del Garda</b><p>Cerca de 30 minutos de estrada.</p><a class="day4-map" href="https://www.google.com/maps/dir/?api=1&origin=Limone+sul+Garda%2C+Italy&destination=Riva+del+Garda%2C+Italy" target="_blank" rel="noopener noreferrer">📍 Rota para Riva</a></section>
+        <section><b>🅿️ 13:00 · Estacionar em Riva</b><p><strong>Parcheggio Monte Oro</strong> · Via Monte Oro, 13.</p><small>Plano B: Parcheggio Terme Romane.</small><div class="day4-links"><a href="https://www.google.com/maps/search/?api=1&query=Parcheggio+Monte+Oro+Riva+del+Garda" target="_blank" rel="noopener noreferrer">Monte Oro</a><a href="https://www.google.com/maps/search/?api=1&query=Parcheggio+Terme+Romane+Riva+del+Garda" target="_blank" rel="noopener noreferrer">Terme Romane</a></div></section>
+        <section class="day4-food"><b>🍝 13:00–14:00 · Almoço em Riva</b><p>Pizza, massa ou prato típico sem alongar demais a parada.</p></section>
+        <section><b>🏔️ 14:00–16:00 · Riva del Garda</b><p><strong>14:00</strong> Piazza III Novembre<br><strong>14:20</strong> Torre Apponale<br><strong>14:45–16:00</strong> Lungolago</p><small>❤️ Preserve esse tempo na orla: lago + montanhas enormes é o que torna Riva especial.</small><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Piazza+III+Novembre+Riva+del+Garda" target="_blank" rel="noopener noreferrer">📍 Piazza III Novembre</a></section>
+        <section class="day4-flight"><b>🚗 16:00 · Riva → Malcesine</b><p>Seguir pela margem leste do Garda.</p><small>Chegada prevista por volta de 16:45.</small><a class="day4-map" href="https://www.google.com/maps/dir/?api=1&origin=Riva+del+Garda%2C+Italy&destination=Malcesine%2C+Italy" target="_blank" rel="noopener noreferrer">📍 Rota para Malcesine</a></section>
+        <section><b>🅿️ 16:45 · Estacionar em Malcesine</b><p><strong>Parcheggio Paina</strong> · Via Paina, 14.</p><small>⭐ Fica perto do centro e é a opção mais prática para esse roteiro.</small><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Parcheggio+Paina+Malcesine" target="_blank" rel="noopener noreferrer">📍 Paina</a></section>
+        <section class="day11-return"><b>🏰 16:45–17:30 · Centro + Castello Scaligero</b><p>Caminhar pelas ruas medievais e ver o castelo por fora.</p><small>Sem visita longa: aqui o melhor é a atmosfera da cidade e o lago.</small><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Castello+Scaligero+Malcesine" target="_blank" rel="noopener noreferrer">📍 Castello Scaligero</a></section>
+        <section><b>⚓ 17:30 · Porto de Malcesine</b><p>Passeio pelo pequeno porto e pela orla.</p><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Porto+di+Malcesine" target="_blank" rel="noopener noreferrer">📍 Porto</a></section>
+        <section class="day4-flight day15-sunset"><b>🌅 17:45–18:30 · Golden hour + pôr do sol</b><p>Terminar o passeio tranquilamente junto ao lago.</p><small>⭐ Um fechamento leve depois de pedalar e caminhar bastante.</small></section>
+        <section class="day4-food"><b>🍕 18:45–19:45 · Jantar em Malcesine</b><p>Hora de sentar sem pressa antes da volta.</p></section>
+        <section class="day4-flight day15-night"><b>🚗 19:45 · Retorno para Medole</b><p>Chegada prevista aproximadamente <strong>21:00–21:15</strong>.</p><a class="day4-map" href="https://www.google.com/maps/dir/?api=1&origin=Malcesine%2C+Italy&destination=Medole%2C+Italy" target="_blank" rel="noopener noreferrer">📍 Rota para Medole</a></section>
+        <section class="day4-flight day15-note"><b>ℹ️ Nota sobre a ciclovia</b><p>A Ciclopista del Garda ainda não liga Limone a Riva de forma contínua. O roteiro usa o trecho suspenso saindo de Limone e retorna pelo mesmo caminho.</p></section>
+        <section class="day-summary"><b>🗺️ Resumo do dia</b><p><strong>07:30 Medole</strong> → <strong>09:00 Limone</strong> → 🚴 Ciclopista → centro de Limone → <strong>13:00 Riva</strong> → orla → <strong>16:45 Malcesine</strong> → castelo + porto → 🌅 pôr do sol → jantar → <strong>19:45 Medole</strong>.</p></section>
+      </div>`;
+    if(!document.getElementById('day15-style')){const s=document.createElement('style');s.id='day15-style';s.textContent='.day15-garda:after{background:linear-gradient(90deg,rgba(22,49,54,.9),rgba(22,49,54,.08))}.day15-sunset{background:#f5efe3!important}.day15-night{background:#eef3ef!important}.day15-note{background:#edf4f2!important}';document.head.appendChild(s);}
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(apply,500));else setTimeout(apply,500);
+})();

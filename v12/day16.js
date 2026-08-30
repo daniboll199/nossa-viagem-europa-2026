@@ -1,0 +1,30 @@
+(()=>{
+ const run=()=>{
+  const timeline=document.querySelector('.timeline'); if(!timeline)return;
+  const find=n=>[...timeline.querySelectorAll(':scope > article.day')].find(a=>a.querySelector('time')?.textContent.trim()===n);
+  let day=find('16 OUT');
+  if(!day){
+   const anchor=find('15 OUT')||find('17 OUT'); if(!anchor)return;
+   day=document.createElement('article'); day.className='day'; day.innerHTML='<time>16 OUT</time><div class="marker">🏙️</div><details class="day-card collapsible-day"><summary><div class="summary-text"></div><div class="summary-chevron">⌄</div></summary><div class="day-content"></div></details>';
+   if(find('17 OUT')) timeline.insertBefore(day,find('17 OUT')); else anchor.insertAdjacentElement('afterend',day);
+  }
+  const s=day.querySelector('.summary-text'),c=day.querySelector('.day-content');
+  if(s)s.innerHTML='<span>ITÁLIA · MILÃO</span><h3>Duomo + Brera + Navigli</h3><small>Duomo · Galleria · Scala · Brera · Castello · Navigli</small>';
+  if(c)c.innerHTML=`<div class="day4-hero"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/DuomoMilano.jpg?width=1600" alt="Duomo di Milano" loading="lazy"><div class="day4-hero-copy"><span>16 OUT · MILÃO</span><h3>Milão dos clássicos aos canais</h3><p>Park & Ride, Duomo, bairros elegantes e fim de tarde em Navigli.</p></div></div><div class="day4-grid">
+<section><b>🚗 07:30 · Medole → Milão</b><p>Saída entre <strong>07:15–07:30</strong>. Estratégia: deixar o carro fora do centro e fazer Milão de metrô + caminhada.</p><small>⚠️ Evita a Area C/ZTL central.</small></section>
+<section><b>🅿️ 09:15 · Molino Dorino</b><p><strong>Park & Ride ATM</strong> · linha vermelha M1 direta para o Duomo.</p><small>Estacionamento econômico para o dia inteiro. Passe diário ATM sugerido: €7,60 por pessoa.</small><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Parcheggio+ATM+Molino+Dorino+Milano" target="_blank" rel="noopener noreferrer">📍 Molino Dorino</a></section>
+<section class="day11-hike"><b>⛪ 10:00–11:30 · Duomo ⭐⭐⭐</b><p>Comecem pelo grande símbolo de Milão. <strong>Entrada gratuita no Duomo e Museu em 16/10/2026</strong>, mediante reserva antecipada.</p><small>🎟️ Reserva abre em <strong>09/10</strong>. Se couber no orçamento, vale considerar as terrazze.</small><div class="day4-links"><a href="https://www.google.com/maps/search/?api=1&query=Duomo+di+Milano" target="_blank" rel="noopener noreferrer">📍 Duomo</a><a href="https://www.duomomilano.it/" target="_blank" rel="noopener noreferrer">🎟️ Site oficial</a></div></section>
+<section><b>🛍️ 11:30–12:00 · Galleria Vittorio Emanuele II</b><p>Arquitetura, cúpula de vidro e o famoso mosaico do touro.</p><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Galleria+Vittorio+Emanuele+II+Milano" target="_blank" rel="noopener noreferrer">📍 Galleria</a></section>
+<section><b>🎭 12:00–12:20 · Teatro alla Scala</b><p>Passagem pela Piazza della Scala e <strong>somente exterior</strong>.</p><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Teatro+alla+Scala+Milano" target="_blank" rel="noopener noreferrer">📍 La Scala</a></section>
+<section class="day4-food"><b>🍝 12:30–13:30 · Almoço</b><p>Sigam em direção a Brera. Boas opções: <strong>panzerotto, pizza al taglio, massa</strong> ou cotoletta alla milanese.</p><small>Evitem comer exatamente na Piazza del Duomo.</small></section>
+<section><b>🎨 13:30–14:30 · Brera</b><p>Ruas estreitas, prédios antigos, cafés e uma das atmosferas mais charmosas de Milão.</p><small>Sem Pinacoteca neste roteiro — o bairro é a atração.</small><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Brera+Milano" target="_blank" rel="noopener noreferrer">📍 Brera</a></section>
+<section><b>🏰 14:45–16:00 · Castello Sforzesco</b><p>Pátios e exterior do castelo + um pouco do <strong>Parco Sempione</strong>.</p><small>Arco della Pace é opcional se houver disposição.</small><div class="day4-links"><a href="https://www.google.com/maps/search/?api=1&query=Castello+Sforzesco+Milano" target="_blank" rel="noopener noreferrer">📍 Castello</a><a href="https://www.google.com/maps/search/?api=1&query=Arco+della+Pace+Milano" target="_blank" rel="noopener noreferrer">📍 Arco</a></div></section>
+<section><b>☕ 16:00–16:45 · Pausa</b><p>Café, gelato, compras ou simplesmente sentar um pouco.</p><small>Folga proposital para o dia não virar uma maratona.</small></section>
+<section><b>🚇 16:45 · Metrô → Navigli</b><p>Sigam para a região de <strong>Porta Genova / Navigli</strong>.</p></section>
+<section class="day4-flight"><b>🌅 17:15–19:30 · Navigli</b><p><strong>17:15–18:15</strong> caminhada pelo Naviglio Grande.<br><strong>18:15–19:30</strong> aperitivo/jantar.</p><small>Ótimo lugar para terminar o dia com a tradição milanesa do aperitivo.</small><a class="day4-map" href="https://www.google.com/maps/search/?api=1&query=Naviglio+Grande+Milano" target="_blank" rel="noopener noreferrer">📍 Naviglio Grande</a></section>
+<section class="day4-flight"><b>🚇 19:30 · Retorno</b><p>Navigli → metrô → Molino Dorino · cerca de <strong>40–50 min</strong>.</p><p><strong>~20:30</strong> 🚗 saída de Milão → Medole.</p></section>
+<section><b>🗺️ Resumo</b><p><strong>07:30</strong> Medole → <strong>09:15</strong> Molino Dorino → <strong>10:00</strong> Duomo → Galleria → Scala → almoço → Brera → Castello → pausa → <strong>17:15</strong> Navigli → <strong>~20:30</strong> retorno.</p><small>🟢 Ritmo 7/10 · dia cheio, mas confortável.</small></section>
+</div>`;
+ };
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(run,550));else setTimeout(run,550);
+})();

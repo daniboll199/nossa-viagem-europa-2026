@@ -15,14 +15,14 @@
   ];
 
   [...schedule.querySelectorAll('.schedule-item')].forEach(sec=>{
-   const txt=sec.textContent||'';
-   const p=photos.find(x=>txt.includes(x.match));
+   const title=sec.querySelector('b');
+   const titleText=(title?.textContent||'').trim();
+   const p=photos.find(x=>titleText.includes(x.match));
    if(!p)return;
    sec.querySelectorAll('.place-photo').forEach(el=>el.remove());
    const fig=document.createElement('figure'); fig.className='place-photo';
    fig.style.margin='12px 0 14px';
    fig.innerHTML=`<img src="${p.src}" alt="${p.alt}" loading="lazy" style="display:block;width:100%;height:auto;max-height:420px;object-fit:cover;border-radius:16px" onerror="this.closest('figure').remove()"><figcaption style="margin-top:7px;font-size:.88rem;opacity:.78">${p.cap}</figcaption>`;
-   const title=sec.querySelector('b');
    if(title) title.insertAdjacentElement('afterend',fig); else sec.insertBefore(fig,sec.firstChild);
   });
  };

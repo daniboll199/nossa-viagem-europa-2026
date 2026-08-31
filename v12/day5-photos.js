@@ -7,6 +7,7 @@
   const photos=[
    {match:'Kinetta Beach',src:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Kineta%2C_Greece_-_panoramio.jpg/1280px-Kineta%2C_Greece_-_panoramio.jpg',alt:'Litoral de Kineta na Grécia',cap:'Kinetta · primeira parada junto ao mar'},
    {match:'Antiga Corinto',src:'https://commons.wikimedia.org/wiki/Special:FilePath/The%20Temple%20of%20Apollo%20in%20Ancient%20Corinth%20on%20June%206%2C%202018.jpg?width=1400',alt:'Templo de Apolo na Antiga Corinto',cap:'Antiga Corinto · Templo de Apolo'},
+   {match:'Gemelos Tavern',src:'https://commons.wikimedia.org/wiki/Special:FilePath/The%20archaeological%20site%20of%20Ancient%20Corinth%20on%20January%2010%2C%202020.jpg?width=1400',alt:'Vista aérea do sítio arqueológico da Antiga Corinto',cap:'Antiga Corinto vista do alto · panorama junto ao Gemelos'},
    {match:'Canal de Corinto',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Corinth%20Canal%20Greece%20aerial%20view.jpg?width=1400',alt:'Vista aérea do Canal de Corinto',cap:'Canal de Corinto'},
    {match:'Cencreia',src:'https://commons.wikimedia.org/wiki/Special:FilePath/At%20the%20ancient%20port%20of%20Kechries%20on%20January%2010%2C%202020.jpg?width=1400',alt:'Ruínas do antigo porto de Cencreia junto ao mar',cap:'Cencreia · antigo porto oriental de Corinto'},
    {match:'Anafiotika',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Anafiotika%2C%20Athens%2C%20Greece.jpg?width=1400',alt:'Casas e vielas de Anafiotika em Atenas',cap:'Anafiotika · um pedacinho das ilhas em Atenas'},
@@ -14,12 +15,6 @@
   ];
 
   const items=[...schedule.querySelectorAll('.schedule-item')];
-
-  // O Gemelos estava usando uma segunda foto do Templo de Apolo. Remove qualquer foto deste bloco.
-  items.forEach(sec=>{
-   if((sec.textContent||'').includes('Gemelos Tavern')) sec.querySelectorAll('.place-photo').forEach(el=>el.remove());
-  });
-
   items.forEach(sec=>{
    const txt=sec.textContent||'';
    const p=photos.find(x=>txt.includes(x.match));

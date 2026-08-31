@@ -2,13 +2,13 @@
  const photos={
   '11 OUT':[
    {match:'Lago di Carezza',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Lago%20di%20Carezza%20e%20Latemar.jpg?width=1200',alt:'Lago di Carezza com o Latemar',cap:'Lago di Carezza'},
-   {match:'Geisler Alm',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Gruppo%20delle%20Odle%20dalla%20malga%20Geisleralm.jpg?width=1200',alt:'Grupo das Odle visto da Geisler Alm',cap:'Geisler Alm · Grupo Odle',priority:true},
+   {match:'Geisler Alm',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Ncisles%20y%20Odles%20uduidal%20Col%20Raiser%20Gherd%C3%ABina.jpg?width=1200',alt:'Grupo das Odle nas Dolomitas',cap:'Odle · Geisler Alm',allowHeroDuplicate:true},
    {match:'San Giovanni',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Chiesa%20di%20San%20Giovanni%20in%20Ranui.jpg?width=1200',alt:'Igreja de San Giovanni in Ranui na Val di Funes',cap:'San Giovanni in Ranui'},
    {match:'Ortisei',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Ortisei.JPG?width=1200',alt:'Vista de Ortisei na Val Gardena',cap:'Ortisei'}
   ],
   '12 OUT':[
    {match:'Lago di Braies',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Pragser%20Wildsee.jpg?width=1200',alt:'Lago di Braies nas Dolomitas',cap:'Lago di Braies'},
-   {match:'Tre Cime',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Drei%20Zinnen%20%28Tre%20Cime%20di%20Lavaredo%29.jpg?width=1200',fallback:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Tre_cime_di_Lavaredo_dalla_forcella.jpg/1280px-Tre_cime_di_Lavaredo_dalla_forcella.jpg',alt:'Tre Cime di Lavaredo',cap:'Tre Cime di Lavaredo',priority:true},
+   {match:'Tre Cime',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Drei%20Zinnen%20Tre%20Cime%20di%20Lavaredo%20Dolomites.jpg?width=1200',alt:'Tre Cime di Lavaredo nas Dolomitas',cap:'Tre Cime di Lavaredo',allowHeroDuplicate:true},
    {match:'Lago di Misurina',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Lago%20di%20misurina.jpg?width=1200',alt:'Lago di Misurina nas Dolomitas',cap:'Lago di Misurina'},
    {match:'Cortina',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Cortina%20d%27Ampezzo.JPG?width=1200',alt:'Cortina d’Ampezzo nas Dolomitas',cap:'Cortina d’Ampezzo'}
   ]
@@ -25,11 +25,11 @@
    const used=new Set();
    [...grid.querySelectorAll('section')].forEach(sec=>{
     const txt=sec.textContent||'';
-    const p=list.find(x=>txt.includes(x.match)&&!used.has(x.match)&&(x.priority||!existing.has(norm(x.src))));
-    if(!p)return;used.add(p.match);existing.add(norm(p.src));
+    const p=list.find(x=>txt.includes(x.match)&&!used.has(x.match)&&(x.allowHeroDuplicate||!existing.has(norm(x.src))));
+    if(!p)return;
+    used.add(p.match);existing.add(norm(p.src));
     const fig=document.createElement('figure');fig.className='d1112-photo';
-    const img=document.createElement('img');img.src=p.src;img.alt=p.alt;img.loading='lazy';img.referrerPolicy='no-referrer';
-    let triedFallback=false;img.onerror=()=>{if(p.fallback&&!triedFallback){triedFallback=true;img.src=p.fallback;}else fig.remove();};
+    const img=document.createElement('img');img.src=p.src;img.alt=p.alt;img.loading='lazy';img.referrerPolicy='no-referrer';img.onerror=()=>fig.remove();
     const cap=document.createElement('figcaption');cap.textContent=p.cap;fig.append(img,cap);sec.appendChild(fig);
    });
   });

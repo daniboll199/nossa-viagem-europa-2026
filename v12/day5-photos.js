@@ -14,13 +14,14 @@
   ];
   [...schedule.querySelectorAll('.schedule-item')].forEach(sec=>{
    const txt=sec.textContent||'';
-   const p=photos.find(x=>txt.includes(x.match)); if(!p||sec.querySelector('.place-photo'))return;
-   const fig=document.createElement('figure'); fig.className='place-photo';
+   const p=photos.find(x=>txt.includes(x.match));
+   if(!p)return;
+   sec.querySelectorAll('.place-photo').forEach((el,i)=>{ if(i>0) el.remove(); });
+   let fig=sec.querySelector('.place-photo');
+   if(!fig){ fig=document.createElement('figure'); fig.className='place-photo'; const title=sec.querySelector('b'); if(title) title.insertAdjacentElement('afterend',fig); else sec.insertBefore(fig,sec.firstChild); }
    fig.style.margin='12px 0 14px';
    fig.innerHTML=`<img src="${p.src}" alt="${p.alt}" loading="lazy" referrerpolicy="no-referrer" style="display:block;width:100%;height:auto;max-height:420px;object-fit:cover;border-radius:16px" onerror="this.closest('figure').remove()"><figcaption style="margin-top:7px;font-size:.88rem;opacity:.78">${p.cap}</figcaption>`;
-   const title=sec.querySelector('b');
-   if(title&&title.nextSibling) title.insertAdjacentElement('afterend',fig); else sec.insertBefore(fig,sec.firstChild);
   });
  };
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(run,900));else setTimeout(run,900);
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(run,1100));else setTimeout(run,1100);
 })();

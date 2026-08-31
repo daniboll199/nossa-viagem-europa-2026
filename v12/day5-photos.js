@@ -7,7 +7,7 @@
   const photos=[
    {match:'Kinetta Beach',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Kineta%2C%20Greece%20-%20panoramio.jpg?width=1400',alt:'Litoral de Kineta na Grécia',cap:'Kinetta · primeira parada junto ao mar'},
    {match:'Antiga Corinto',src:'https://commons.wikimedia.org/wiki/Special:FilePath/The%20Temple%20of%20Apollo%20in%20Ancient%20Corinth%20on%20June%206%2C%202018.jpg?width=1400',alt:'Templo de Apolo na Antiga Corinto',cap:'Antiga Corinto · Templo de Apolo'},
-   {match:'Gemelos Tavern',src:'./v12/images/corinto-antiga-gemelos.jpg?v=20260831-1642',alt:'Vista ampla das ruínas da Antiga Corinto',cap:'Antiga Corinto · vista panorâmica das ruínas'},
+   {match:'Gemelos Tavern',src:'https://commons.wikimedia.org/wiki/Special:FilePath/The%20archaeological%20site%20of%20Ancient%20Corinth%20on%20January%2010%2C%202020.jpg?width=1400',alt:'Vista aérea do sítio arqueológico da Antiga Corinto',cap:'Antiga Corinto vista do alto · panorama junto ao Gemelos'},
    {match:'Canal de Corinto',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Corinth%20Canal%20Greece%20aerial%20view.jpg?width=1400',alt:'Vista aérea do Canal de Corinto',cap:'Canal de Corinto'},
    {match:'Cencreia',src:'https://commons.wikimedia.org/wiki/Special:FilePath/At%20the%20ancient%20port%20of%20Kechries%20on%20January%2010%2C%202020.jpg?width=1400',alt:'Ruínas do antigo porto de Cencreia junto ao mar',cap:'Cencreia · antigo porto oriental de Corinto'},
    {match:'Anafiotika',src:'https://commons.wikimedia.org/wiki/Special:FilePath/Anafiotika%2C%20Athens%2C%20Greece.jpg?width=1400',alt:'Casas e vielas de Anafiotika em Atenas',cap:'Anafiotika · um pedacinho das ilhas em Atenas'},
